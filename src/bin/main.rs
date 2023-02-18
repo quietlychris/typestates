@@ -4,6 +4,7 @@ fn main() {
     let net_cfg = NetworkConfig::<Tcp>::default();
     println!("{:?}", net_cfg);
     let net_cfg = NetworkConfig::<Udp>::default();
+    println!("{:?}", net_cfg);
 
     let node_cfg = NodeConfig::<_, _>::from_net_cfg(net_cfg);
     let node = Node::<_, _, usize>::from_config(node_cfg);
