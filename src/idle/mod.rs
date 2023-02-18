@@ -3,6 +3,7 @@ use std::marker::PhantomData;
 
 use crate::net_config::*;
 use crate::*;
+use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 
 impl<I: Interface + Default, T: Message> Node<I, Idle, T> {
     pub fn from_config(cfg: NodeConfig<I, T>) -> Node<I, Idle, T> {
@@ -20,6 +21,7 @@ impl<I: Interface + Default, T: Message> Node<I, Idle, T> {
                 network_cfg: NetworkConfig::<I> {
                     __interface: PhantomData::<I>,
                     max_buffer_size: 1_000,
+                    socket: SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 25_000)
                 },
             },
         }
@@ -33,6 +35,7 @@ impl<I: Interface + Default, T: Message> Node<I, Idle, T> {
                 network_cfg: NetworkConfig::<I> {
                     __interface: PhantomData::<I>,
                     max_buffer_size: 1_000,
+                    socket: SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 25_000)
                 },
             },
         }
